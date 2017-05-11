@@ -7,5 +7,23 @@
     <string name="_80minAllMetropolitan">M80</string>
     <string name="_24hourAll">MA</string>
     <string name="bus_number">Bus Number</string>
-    <string name="quick_list">Quick List</string>
+    <string name="quick_list">Quick Ticket</string>
+    <string name="descriptionNormalTicket">Type in bus number to by a ticket</string>
+    <string name="sendMessagePrompt">Do you want to send this message \n</string>
+    <string name="costNormalTicket">Cost total SMS: 0.5 Euro + TVA</string>
+    <string name="costT">Total cost SMS: 0.9 Euro + TVA</string>
+    <string name="costA">Total cost SMS: 2.60 Euro + TVA</string>
+    <string name="costM40">Total cost SMS: 0.9 Euro + TVA</string>
+    <string name="costM60">Total cost SMS: 1.35 Euro + TVA</string>
+    <string name="costM80">Total cost SMS: 1.8 Euro + TVA</string>
+    <string name="costMA">Total cost SMS: 4 Euro + TVA</string>
+    <string name="noTicket">No ticket selected</string>
+    <string name="messageSent">Message Sent!</string>
+    <string name="messageNotSent">No Message to Send!</string>
+    <string name="descriptionT">1 hour ticket for \nall urban lines</string>
+    <string name="descriptionA">24 hour ticket for \nall urban lines</string>
+    <string name="descriptionM40">40 minute ticket \nfor all lines</string>
+    <string name="descriptionM60">60 minute ticket \nfor all lines</string>
+    <string name="descriptionM80">80 minute ticket \nfor all lines</string>
+    <string name="descriptionMA">24 hour ticket \nfor all lines</string>
 </resources>
