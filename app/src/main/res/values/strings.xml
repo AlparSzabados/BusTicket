@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">BusTicket</string>
+    <string name="_60minAllUrban">T</string>
+    <string name="_24hoursAllUrban">A</string>
+    <string name="_40minAllMetropolitan">M40</string>
+    <string name="_60minAllMetropolitan">M60</string>
+    <string name="_80minAllMetropolitan">M80</string>
+    <string name="_24hourAll">MA</string>
+    <string name="bus_number">Bus Number</string>
+    <string name="quick_list">Quick List</string>
 </resources>
