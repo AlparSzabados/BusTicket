@@ -9,27 +9,27 @@
     tools:layout_editor_absoluteY="81dp">
 
     <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
+        android:id="@+id/bus"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/floatingActionButton2"
         android:contextClickable="false"
         android:ems="10"
-        android:hint="@string/bus_number"
+        android:hint="@string/descriptionNormalTicket"
         android:inputType="text"
         android:selectAllOnFocus="false"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="22dp"
+        android:layout_toStartOf="@+id/normalTicket"
+        android:layout_alignEnd="@+id/tableLayout" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/floatingActionButton2"
+        android:layout_below="@+id/normalTicket"
         android:layout_marginTop="27dp"
         android:text="@string/quick_list"
         android:textAlignment="center"
@@ -56,12 +56,21 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/T"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onClick"
                 android:text="@string/_60minAllUrban" />
 
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:minLines="2"
+                android:paddingTop="8dp"
+                android:text="@string/descriptionT" />
+
         </TableRow>
 
         <TableRow
@@ -69,12 +78,20 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/A"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onClick"
                 android:text="@string/_24hoursAllUrban" />
 
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingTop="8dp"
+                android:text="@string/descriptionA" />
+
         </TableRow>
 
         <TableRow
@@ -82,12 +99,20 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/M40"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onClick"
                 android:text="@string/_40minAllMetropolitan" />
 
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingTop="8dp"
+                android:text="@string/descriptionM40" />
+
         </TableRow>
 
         <TableRow
@@ -95,11 +120,19 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/M60"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onClick"
                 android:text="@string/_60minAllMetropolitan" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingTop="8dp"
+                android:text="@string/descriptionM60" />
         </TableRow>
 
         <TableRow
@@ -107,11 +140,19 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/M80"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onClick"
                 android:text="@string/_80minAllMetropolitan" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingTop="8dp"
+                android:text="@string/descriptionM80" />
         </TableRow>
 
         <TableRow
@@ -119,24 +160,32 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/MA"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onClick"
                 android:text="@string/_24hourAll" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingTop="8dp"
+                android:text="@string/descriptionMA" />
         </TableRow>
     </TableLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/normalTicket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="22dp"
         android:clickable="true"
         android:contextClickable="true"
+        android:onClick="onClick"
         app:fabSize="mini"
-        app:srcCompat="@android:drawable/ic_menu_send" />
+        app:srcCompat="@android:drawable/ic_menu_send"
+        android:layout_alignTop="@+id/bus"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
