@@ -13,16 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contextClickable="false"
-        android:ems="10"
         android:hint="@string/descriptionNormalTicket"
-        android:inputType="text"
+        android:inputType="number"
         android:selectAllOnFocus="false"
         android:textColor="@color/colorAccent"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="22dp"
-        android:layout_toStartOf="@+id/normalTicket"
-        android:layout_alignEnd="@+id/tableLayout" />
+        android:layout_toStartOf="@+id/normalTicket" />
 
     <TextView
         android:id="@+id/textView"
@@ -33,7 +31,7 @@
         android:layout_marginTop="27dp"
         android:text="@string/quick_list"
         android:textAlignment="center"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorAccentButton"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -57,7 +55,7 @@
 
             <Button
                 android:id="@+id/T"
-                style="@style/Widget.AppCompat.Button.Colored"
+                style="@style/Widget.AppCompat.Button.Colored.Buttons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"
@@ -69,7 +67,9 @@
                 android:layout_height="match_parent"
                 android:minLines="2"
                 android:paddingTop="8dp"
-                android:text="@string/descriptionT" />
+                android:text="@string/descriptionT"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorAccentButton" />
 
         </TableRow>
 
@@ -79,7 +79,7 @@
 
             <Button
                 android:id="@+id/A"
-                style="@style/Widget.AppCompat.Button.Colored"
+                style="@style/Widget.AppCompat.Button.Colored.Buttons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"
@@ -90,7 +90,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingTop="8dp"
-                android:text="@string/descriptionA" />
+                android:text="@string/descriptionA"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorAccentButton" />
 
         </TableRow>
 
@@ -100,9 +102,7 @@
 
             <Button
                 android:id="@+id/M40"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button.Colored.Buttons"
                 android:onClick="onClick"
                 android:text="@string/_40minAllMetropolitan" />
 
@@ -111,7 +111,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingTop="8dp"
-                android:text="@string/descriptionM40" />
+                android:text="@string/descriptionM40"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorAccentButton" />
 
         </TableRow>
 
@@ -121,9 +123,7 @@
 
             <Button
                 android:id="@+id/M60"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button.Colored.Buttons"
                 android:onClick="onClick"
                 android:text="@string/_60minAllMetropolitan" />
 
@@ -132,7 +132,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingTop="8dp"
-                android:text="@string/descriptionM60" />
+                android:text="@string/descriptionM60"
+                android:textColor="@color/colorAccentButton" />
         </TableRow>
 
         <TableRow
@@ -141,7 +142,7 @@
 
             <Button
                 android:id="@+id/M80"
-                style="@style/Widget.AppCompat.Button.Colored"
+                style="@style/Widget.AppCompat.Button.Colored.Buttons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"
@@ -152,7 +153,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingTop="8dp"
-                android:text="@string/descriptionM80" />
+                android:text="@string/descriptionM80"
+                android:textColor="@color/colorAccentButton" />
         </TableRow>
 
         <TableRow
@@ -161,7 +163,7 @@
 
             <Button
                 android:id="@+id/MA"
-                style="@style/Widget.AppCompat.Button.Colored"
+                style="@style/Widget.AppCompat.Button.Colored.Buttons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"
@@ -172,7 +174,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingTop="8dp"
-                android:text="@string/descriptionMA" />
+                android:text="@string/descriptionMA"
+                android:textColor="@color/colorAccentButton" />
         </TableRow>
     </TableLayout>
 
@@ -180,12 +183,13 @@
         android:id="@+id/normalTicket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/bus"
         android:clickable="true"
         android:contextClickable="true"
         android:onClick="onClick"
+        app:backgroundTint="@color/colorPrimary"
         app:fabSize="mini"
-        app:srcCompat="@android:drawable/ic_menu_send"
-        android:layout_alignTop="@+id/bus"
-        android:layout_alignParentEnd="true" />
+        app:srcCompat="@android:drawable/ic_menu_send" />
 
 </RelativeLayout>
