@@ -8,9 +8,9 @@
     <string name="_24hourAll">MA</string>
     <string name="bus_number">Bus Number</string>
     <string name="quick_list">Quick Ticket</string>
-    <string name="descriptionNormalTicket">Type in bus number to by a ticket</string>
-    <string name="sendMessagePrompt">Do you want to send this message \n</string>
-    <string name="costNormalTicket">Cost total SMS: 0.5 Euro + TVA</string>
+    <string name="descriptionNormalTicket">Type in bus number to buy a ticket</string>
+    <string name="sendMessagePrompt">Do you want to send this message? \n</string>
+    <string name="costNormalTicket">Total cost SMS: 0.5 Euro + TVA</string>
     <string name="costT">Total cost SMS: 0.9 Euro + TVA</string>
     <string name="costA">Total cost SMS: 2.60 Euro + TVA</string>
     <string name="costM40">Total cost SMS: 0.9 Euro + TVA</string>
