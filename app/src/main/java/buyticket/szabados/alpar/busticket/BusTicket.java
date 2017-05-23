@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -12,12 +13,31 @@ import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class BusTicket extends AppCompatActivity {
-    public static final SmsManager SMS_MANAGER = SmsManager.getDefault();
-    public final int MY_PERMISSION_REQUEST_SEND_SMS = 1;
-    public EditText busNumber;
+    private static final SmsManager SMS_MANAGER = SmsManager.getDefault();
+    private final int MY_PERMISSION_REQUEST_SEND_SMS = 1;
+
+    private final long _30_minutes = 1_800_000;
+    private final long _40_minutes = 2_400_000;
+    private final long _60_minutes = 3_600_000;
+    private final long _80_minutes = 4_800_000;
+    private final long _24_hours = 86_400_000;
+
+    private EditText busNumber;
+    private TextView chronometer;
+    private String alertMessage;
+    private String message;
+    private long timerDuration;
+    private CountDownTimer countDownTimer;
+
+    // TODO parse CTPCJ site to check fairs
+    // TODO Create ENUMS
+    // TODO add timer
+    // TODO disable the first check if an automated exists
+    // TODO check is ongoing ticket is still valid
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +45,25 @@ public class BusTicket extends AppCompatActivity {
         setContentView(R.layout.activity_bus_ticket);
 
         busNumber = (EditText) findViewById(R.id.bus);
+        chronometer = (TextView) findViewById(R.id.chronometer);
         checkPermission();
     }
+
+    private void createCountdownTimer(long start, long countdownUnit) {
+        countDownTimer = new CountDownTimer(start, countdownUnit) {
+            public void onTick(long millisUntilFinished) {
+                int seconds = (int) (millisUntilFinished / 1000) % 60;
+                int minutes = (int) ((millisUntilFinished / (1000 * 60)) % 60);
+                int hours = (int) ((millisUntilFinished / (1000 * 60 * 60)) % 24);
+                chronometer.setText(hours + ":" + minutes + ":" + seconds);
+            }
+
+            public void onFinish() {
+                chronometer.setText("");
+            }
+        }.start();
+    }
+
 
     private void checkPermission() {
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS);
@@ -38,14 +75,17 @@ public class BusTicket extends AppCompatActivity {
     }
 
     public void onClick(final View view) {
+        setup(view);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(getAlertMessage(view));
+        builder.setMessage(alertMessage);
         builder.setCancelable(true);
 
         builder.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        sendMessage(view);
+                        if (!chronometer.toString().isEmpty() && countDownTimer != null) countDownTimer.cancel();
+                        createCountdownTimer(timerDuration, 1000);
+                        sendMessage();
                         clearMessage();
                     }
                 });
@@ -60,32 +100,8 @@ public class BusTicket extends AppCompatActivity {
         builder.create().show();
     }
 
-    private String getAlertMessage(View view) {
-        String sendMessagePromptText = getString(R.string.sendMessagePrompt);
-
-        switch (view.getId()) {
-            case R.id.normalTicket:
-                return sendMessagePromptText + getString(R.string.costNormalTicket);
-            case R.id.T:
-                return sendMessagePromptText + getString(R.string.costT);
-            case R.id.A:
-                return sendMessagePromptText + getString(R.string.costA);
-            case R.id.M40:
-                return sendMessagePromptText + getString(R.string.costM40);
-            case R.id.M60:
-                return sendMessagePromptText + getString(R.string.costM60);
-            case R.id.M80:
-                return sendMessagePromptText + getString(R.string.costM80);
-            case R.id.MA:
-                return sendMessagePromptText + getString(R.string.costMA);
-        }
-
-        return getString(R.string.noTicket);
-    }
-
-    private void sendMessage(View view) {
-        String message = getMessage(view);
-        String phoneAddress = "6505551212"; //Emulator Phone number
+    private void sendMessage() {
+        String phoneAddress = "7479"; //Emulator Phone number
 
         if (!message.isEmpty()) {
             SMS_MANAGER.sendTextMessage(phoneAddress, null, message, null, null);
@@ -103,8 +119,41 @@ public class BusTicket extends AppCompatActivity {
         busNumber.setText("");
     }
 
-    private String getMessage(View view) {
-        if (view.getId() == R.id.normalTicket) return busNumber.getText().toString();
-        else return ((Button) view).getText().toString();
+    private void setup(View view) {
+        String sendMessagePromptText = getString(R.string.sendMessagePrompt);
+
+        if (view.getId() == R.id.normalTicket) message = busNumber.getText().toString();
+        else message = ((Button) view).getText().toString();
+
+        switch (view.getId()) {
+            case R.id.normalTicket:
+                alertMessage = sendMessagePromptText + getString(R.string.costNormalTicket);
+                timerDuration = _30_minutes;
+                break;
+            case R.id.T:
+                alertMessage = sendMessagePromptText + getString(R.string.costT);
+                timerDuration = _60_minutes;
+                break;
+            case R.id.A:
+                alertMessage = sendMessagePromptText + getString(R.string.costA);
+                timerDuration = _24_hours;
+                break;
+            case R.id.M40:
+                alertMessage = sendMessagePromptText + getString(R.string.costM40);
+                timerDuration = _40_minutes;
+                break;
+            case R.id.M60:
+                alertMessage = sendMessagePromptText + getString(R.string.costM60);
+                timerDuration = _60_minutes;
+                break;
+            case R.id.M80:
+                alertMessage = sendMessagePromptText + getString(R.string.costM80);
+                timerDuration = _80_minutes;
+                break;
+            case R.id.MA:
+                alertMessage = sendMessagePromptText + getString(R.string.costMA);
+                timerDuration = _24_hours;
+                break;
+        }
     }
 }

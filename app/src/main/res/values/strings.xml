@@ -20,7 +20,7 @@
     <string name="noTicket">No ticket selected</string>
     <string name="messageSent">Message Sent!</string>
     <string name="messageNotSent">No Message to Send!</string>
-    <string name="descriptionT">1 hour ticket for \nall urban lines</string>
+    <string name="descriptionT">60 minute ticket for \nall urban lines</string>
     <string name="descriptionA">24 hour ticket for \nall urban lines</string>
     <string name="descriptionM40">40 minute ticket \nfor all lines</string>
     <string name="descriptionM60">60 minute ticket \nfor all lines</string>
