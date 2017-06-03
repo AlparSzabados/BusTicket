@@ -9,15 +9,15 @@ private final String PHONE_ADDRESS = "7479";
 
 ### How it works:
 - for normal tickets you can type in the line number of the bus you are on into the text field:
-![text](https://cloud.githubusercontent.com/assets/15666137/26754473/2845f456-4884-11e7-9778-e6054883c80d.png)
+![text_small](https://cloud.githubusercontent.com/assets/15666137/26754718/9140d6a2-4888-11e7-9c2d-78b4cac6811b.png)
 - for other tickets, you can use the quick-list:
-![quick](https://cloud.githubusercontent.com/assets/15666137/26754476/2f5bfa7e-4884-11e7-864f-fbfb88882b6b.png)
+![quick_small](https://cloud.githubusercontent.com/assets/15666137/26754726/b13daa48-4888-11e7-9b46-22cdf3c587f1.png)
 - after choosing your ticket you will be prompted by this dialog window:
-![alert_1](https://cloud.githubusercontent.com/assets/15666137/26754448/b26bfe9c-4883-11e7-8d8a-8b54ee30a575.png)
+![alert_1_small](https://cloud.githubusercontent.com/assets/15666137/26754730/e38a29ae-4888-11e7-8012-0c7187856a26.png)
 - this is for additional price information and also for safety, in case your pocket decides to buy a ticket for you.
 
 - you will also get another prompt from your phone by default (if you did not deactivate it):
-![alert_2](https://cloud.githubusercontent.com/assets/15666137/26754450/b6caa222-4883-11e7-8823-3b0fb4e44218.png)
+![alert_2_small](https://cloud.githubusercontent.com/assets/15666137/26754731/e4a2af78-4888-11e7-9600-aea5aad4e262.png)
 - after buying the ticket you wanted a timer will count down in the bottom left corner (depending on which ticket you have chosen) indicating the duration of your ticket.
 
 
