@@ -12,15 +12,22 @@
         android:id="@+id/bus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/normalTicket"
         android:contextClickable="false"
         android:hint="@string/descriptionNormalTicket"
         android:inputType="number"
         android:selectAllOnFocus="false"
-        android:textColor="@color/colorAccent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp"
-        android:layout_toStartOf="@+id/normalTicket" />
+        android:textColor="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="00:00:00" />
 
     <TextView
         android:id="@+id/textView"
@@ -28,155 +35,102 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/normalTicket"
-        android:layout_marginTop="27dp"
         android:text="@string/quick_list"
         android:textAlignment="center"
-        android:textColor="@color/colorAccentButton"
+        android:textColor="@color/colorSecondaryText"
         android:textSize="24sp"
         android:textStyle="bold" />
-
-    <Space
-        android:id="@+id/space"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="25dp" />
 
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/space"
-        android:layout_centerHorizontal="true">
+        android:layout_above="@+id/chronometer"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <Button
                 android:id="@+id/T"
-                style="@style/Widget.AppCompat.Button.Colored.Buttons"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/TicketButtons"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorBackgroundTint"
                 android:onClick="onClick"
                 android:text="@string/_60minAllUrban" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:minLines="2"
-                android:paddingTop="8dp"
-                android:text="@string/descriptionT"
-                android:textAlignment="textStart"
-                android:textColor="@color/colorAccentButton" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
             <Button
                 android:id="@+id/A"
-                style="@style/Widget.AppCompat.Button.Colored.Buttons"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/TicketButtons"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorBackgroundTint"
                 android:onClick="onClick"
                 android:text="@string/_24hoursAllUrban" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingTop="8dp"
-                android:text="@string/descriptionA"
-                android:textAlignment="textStart"
-                android:textColor="@color/colorAccentButton" />
-
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <Button
                 android:id="@+id/M40"
-                style="@style/Widget.AppCompat.Button.Colored.Buttons"
+                style="@style/TicketButtons"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorBackgroundTint"
                 android:onClick="onClick"
                 android:text="@string/_40minAllMetropolitan" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingTop="8dp"
-                android:text="@string/descriptionM40"
-                android:textAlignment="textStart"
-                android:textColor="@color/colorAccentButton" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
             <Button
                 android:id="@+id/M60"
-                style="@style/Widget.AppCompat.Button.Colored.Buttons"
+                style="@style/TicketButtons"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorBackgroundTint"
                 android:onClick="onClick"
                 android:text="@string/_60minAllMetropolitan" />
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingTop="8dp"
-                android:text="@string/descriptionM60"
-                android:textColor="@color/colorAccentButton" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <Button
                 android:id="@+id/M80"
-                style="@style/Widget.AppCompat.Button.Colored.Buttons"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/TicketButtons"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorBackgroundTint"
                 android:onClick="onClick"
                 android:text="@string/_80minAllMetropolitan" />
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingTop="8dp"
-                android:text="@string/descriptionM80"
-                android:textColor="@color/colorAccentButton" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
             <Button
                 android:id="@+id/MA"
-                style="@style/Widget.AppCompat.Button.Colored.Buttons"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/TicketButtons"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorBackgroundTint"
                 android:onClick="onClick"
                 android:text="@string/_24hourAll" />
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingTop="8dp"
-                android:text="@string/descriptionMA"
-                android:textColor="@color/colorAccentButton" />
         </TableRow>
+
     </TableLayout>
 
     <android.support.design.widget.FloatingActionButton
@@ -185,19 +139,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/bus"
-        android:clickable="true"
-        android:contextClickable="true"
         android:onClick="onClick"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@color/colorBackgroundTint"
         app:fabSize="mini"
         app:srcCompat="@android:drawable/ic_menu_send" />
-
-    <TextView
-        android:id="@+id/chronometer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tableLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
 
 </RelativeLayout>
