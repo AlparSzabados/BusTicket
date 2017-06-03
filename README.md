@@ -7,6 +7,9 @@ By default the phone number that the app is sending messages to is `(650) 555-12
 private final String PHONE_ADDRESS = "7479";
 ```
 
+### Permissions:
+- you will be prompted to accept the `SEND_SMS` permission when you first run the application
+
 ### How it works:
 - for normal tickets you can type in the line number of the bus you are on into the text field:
 
