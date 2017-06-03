@@ -20,7 +20,7 @@ import static buyticket.szabados.alpar.busticket.Tickets.NORMAL_TICKET;
 public class BusTicket extends AppCompatActivity {
     private static final SmsManager SMS_MANAGER = SmsManager.getDefault();
     private final int MY_PERMISSION_REQUEST_SEND_SMS = 1;
-    private final String PHONE_ADDRESS = "(650) 555-1212"; //Emulator Phone number
+    private final String PHONE_ADDRESS = "7479"; //Emulator Phone number
 
     private EditText busNumber;
     private TextView timer;
