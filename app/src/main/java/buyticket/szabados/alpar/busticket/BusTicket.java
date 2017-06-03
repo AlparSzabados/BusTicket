@@ -3,7 +3,6 @@ package buyticket.szabados.alpar.busticket;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -56,17 +55,16 @@ public class BusTicket extends AppCompatActivity {
         builder.setMessage(alertMessage);
         builder.setCancelable(true);
 
-        startService(new Intent(this, TimerService.class));
         builder.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        if (!timer.toString().isEmpty() && countDownTimer != null) countDownTimer.cancel();
+                        if (!timer.toString().isEmpty() && countDownTimer != null)
+                            countDownTimer.cancel();
                         createCountdownTimer(ticketDuration, 1000);
                         sendMessage();
                         clearMessage();
                     }
                 });
-
         builder.setNegativeButton("No",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -125,11 +123,11 @@ public class BusTicket extends AppCompatActivity {
         return (millisUntilFinished / 3600000) % 24;
     }
 
-    private long getSecond(long millisUntilFinished) {
-        return (millisUntilFinished / 1000) % 60;
-    }
-
     private long getMinute(long millisUntilFinished) {
         return (millisUntilFinished / 60000) % 60;
+    }
+
+    private long getSecond(long millisUntilFinished) {
+        return (millisUntilFinished / 1000) % 60;
     }
 }
