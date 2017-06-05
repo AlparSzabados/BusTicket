@@ -153,7 +153,7 @@ public class BusTicket extends AppCompatActivity {
             if (view.getId() == t.id) {
                 if (t.message == null) message = busNumber.getText().toString();
                 else message = t.message;
-                alertMessage = getString(R.string.sendMessagePrompt) + getString(R.string.totalCost) + calculateCost(t.cost) + getString(R.string.vTA);
+                alertMessage = getString(R.string.sendMessagePrompt) + getString(R.string.totalCost) +  " "  + calculateCost(t.cost) + " " + getString(R.string.currency) + " " + getString(R.string.vTAText);
                 ticketDuration = t.ticketDuration;
             }
         }
