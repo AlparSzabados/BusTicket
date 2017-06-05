@@ -14,5 +14,6 @@
     <string name="messageSent">Message Sent!</string>
     <string name="messageNotSent">No Message to Send!</string>
     <string name="totalCost">Total cost:</string>
-    <string name="vTA">with VTA(19%)</string>
+    <string name="vTAText">with VTA</string>
+    <string name="currency">Euro</string>
 </resources>
