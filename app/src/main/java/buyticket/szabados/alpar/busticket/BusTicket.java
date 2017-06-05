@@ -15,8 +15,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Formatter;
+
 import static android.content.DialogInterface.OnClickListener;
 import static buyticket.szabados.alpar.busticket.Tickets.NORMAL_TICKET;
+import static java.util.concurrent.TimeUnit.HOURS;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+import static java.util.concurrent.TimeUnit.MINUTES;
 
 public class BusTicket extends AppCompatActivity {
     private static final SmsManager SMS_MANAGER = SmsManager.getDefault();
@@ -52,7 +57,6 @@ public class BusTicket extends AppCompatActivity {
                 return;
             }
             requestPermissions(new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_SEND_SMS);
-            return;
         }
     }
 
@@ -111,13 +115,23 @@ public class BusTicket extends AppCompatActivity {
     private void createCountdownTimer(long start, long countdownUnit) {
         countDownTimer = new CountDownTimer(start, countdownUnit) {
             public void onTick(long millisUntilFinished) {
-                timer.setText(getHour(millisUntilFinished) + ":" + getMinute(millisUntilFinished) + ":" + getSecond(millisUntilFinished));
+                timer.setText(getTimer(millisUntilFinished));
             }
 
             public void onFinish() {
                 timer.setText("");
             }
         }.start();
+    }
+
+    private String getTimer(long millisUntilFinished) {
+        StringBuilder timer = new StringBuilder();
+        Formatter formatter = new Formatter(timer);
+        long hours = MILLISECONDS.toHours(millisUntilFinished);
+        long minutes = MILLISECONDS.toMinutes(millisUntilFinished) - HOURS.toMinutes(hours);
+        long seconds = MILLISECONDS.toSeconds(millisUntilFinished) - MINUTES.toSeconds(MILLISECONDS.toMinutes(millisUntilFinished));
+        formatter.format("%02d:%02d:%02d", hours, minutes, seconds);
+        return timer.toString();
     }
 
     private void sendMessage() {
@@ -151,17 +165,5 @@ public class BusTicket extends AppCompatActivity {
                 ticketDuration = t.ticketDuration;
             }
         }
-    }
-
-    private long getHour(long millisUntilFinished) {
-        return (millisUntilFinished / 3600000) % 24;
-    }
-
-    private long getMinute(long millisUntilFinished) {
-        return (millisUntilFinished / 60000) % 60;
-    }
-
-    private long getSecond(long millisUntilFinished) {
-        return (millisUntilFinished / 1000) % 60;
     }
 }
