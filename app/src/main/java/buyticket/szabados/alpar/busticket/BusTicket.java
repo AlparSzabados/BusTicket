@@ -116,7 +116,6 @@ public class BusTicket extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 timer.setText(getTimer(millisUntilFinished));
             }
-
             public void onFinish() {
                 timer.setText("");
             }
@@ -150,15 +149,18 @@ public class BusTicket extends AppCompatActivity {
     }
 
     private void setupPressedTicket(View view) {
-        String sendMessagePromptText = getString(R.string.sendMessagePrompt);
-
         for (Tickets t : Tickets.values()) {
             if (view.getId() == t.id) {
                 if (t.message == null) message = busNumber.getText().toString();
                 else message = t.message;
-                alertMessage = sendMessagePromptText + t.cost;
+                alertMessage = getString(R.string.sendMessagePrompt) + getString(R.string.totalCost) + calculateCost(t.cost) + getString(R.string.vTA);
                 ticketDuration = t.ticketDuration;
             }
         }
+    }
+
+    private String calculateCost(float cost) {
+        float vTA = Float.parseFloat(getString(R.string.vTA));
+        return new Formatter(new StringBuilder()).format("%.2f", (vTA * cost) + cost).toString();
     }
 }
