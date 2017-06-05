@@ -19,7 +19,7 @@ import static buyticket.szabados.alpar.busticket.Tickets.NORMAL_TICKET;
 
 public class BusTicket extends AppCompatActivity {
     private static final SmsManager SMS_MANAGER = SmsManager.getDefault();
-    private final int MY_PERMISSION_REQUEST_SEND_SMS = 1;
+    private final int PERMISSION_REQUEST_SEND_SMS = 1;
     private final String PHONE_ADDRESS = getString(R.string.phoneNumber);
 
     private EditText busNumber;
@@ -43,7 +43,7 @@ public class BusTicket extends AppCompatActivity {
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SEND_SMS)) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, MY_PERMISSION_REQUEST_SEND_SMS);
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_SEND_SMS);
             }
         }
     }
