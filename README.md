@@ -1,14 +1,14 @@
 # BusTicket
 Simple app for buying bus tickets in Cluj-Napoca. It automatically sends the right text message to `7479`. The message with your ticket will be received by your default text message app, not by this application.
 
-By default the phone number that the app is sending messages to is `(650) 555-1212`, this is the default phone number of the emulator. If you want to buy tickets with this app (for real), you'll need to change the code in the `BusTicket.java` file to:
+By default the phone number that the app is sending messages to is `7479`, this is the phone number provided by `CTPCJ` (local transportation company) for buying tickets using SMS. If you want to change this number to something else, you'll need to change this line in the strings.xml file:
 
-```java
-private final String PHONE_ADDRESS = "7479";
+```xml
+<string name="phoneNumber">7479</string>
 ```
 
 ### Permissions:
-- you will be prompted to accept the `SEND_SMS` permission when you first run the application
+- you will be prompted to accept the `SEND_SMS` permission when you first use the application
 
 ### How it works:
 - for normal tickets you can type in the line number of the bus you are on into the text field:
@@ -31,10 +31,5 @@ private final String PHONE_ADDRESS = "7479";
 ### Bugs:
 - if you close the app the timer will stop counting down and will display "00:00:00". I'm working on it to make it persistent
 
-### TODOs
-
- - Write tests
- - Make timer work properly
- - Other great improvements
-
-### Note: This is a work in progress!! You have been warned!
+### Note1: This is a very early version, use it with caution! 
+### Note2: I always welcome feedback :)

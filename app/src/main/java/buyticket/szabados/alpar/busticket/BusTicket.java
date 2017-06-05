@@ -137,7 +137,6 @@ public class BusTicket extends AppCompatActivity {
     private void sendMessage() {
         if (!message.isEmpty()) {
             SMS_MANAGER.sendTextMessage(getString(R.string.phoneNumber), null, message, null, null);
-            getToast(getString(R.string.messageSent)).show();
         } else {
             getToast(getString(R.string.messageNotSent)).show();
         }
