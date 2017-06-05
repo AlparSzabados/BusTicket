@@ -13,4 +13,5 @@
     <string name="noTicket">No ticket selected</string>
     <string name="messageSent">Message Sent!</string>
     <string name="messageNotSent">No Message to Send!</string>
+    <string name="phoneNumber">7479</string>
 </resources>
