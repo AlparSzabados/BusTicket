@@ -18,7 +18,6 @@ import android.widget.Toast;
 import java.util.Formatter;
 
 import static android.content.DialogInterface.OnClickListener;
-import static buyticket.szabados.alpar.busticket.Tickets.NORMAL_TICKET;
 import static java.util.concurrent.TimeUnit.HOURS;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.MINUTES;
@@ -154,12 +153,9 @@ public class BusTicket extends AppCompatActivity {
         String sendMessagePromptText = getString(R.string.sendMessagePrompt);
 
         for (Tickets t : Tickets.values()) {
-            if (view.getId() == t.id && t == NORMAL_TICKET) {
-                message = busNumber.getText().toString();
-                alertMessage = sendMessagePromptText + t.cost;
-                ticketDuration = t.ticketDuration;
-            } else if (view.getId() == t.id) {
-                message = t.message;
+            if (view.getId() == t.id) {
+                if (t.message == null) message = busNumber.getText().toString();
+                else message = t.message;
                 alertMessage = sendMessagePromptText + t.cost;
                 ticketDuration = t.ticketDuration;
             }

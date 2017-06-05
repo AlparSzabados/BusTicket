@@ -1,7 +1,7 @@
 package buyticket.szabados.alpar.busticket;
 
 enum Tickets {
-    NORMAL_TICKET(R.id.normalTicket, 1_800_000, "Total cost SMS: 0.5 Euro + TVA", "FILLED BY R.id.bus"),
+    NORMAL_TICKET(R.id.normalTicket, 1_800_000, "Total cost SMS: 0.5 Euro + TVA", null),
     T(R.id.T, 3_600_000, "Total cost SMS: 0.9 Euro + TVA", "T"),
     A(R.id.A, 86_400_000, "Total cost SMS: 2.60 Euro + TVA", "A"),
     M40(R.id.M40, 2_400_000, "Total cost SMS: 0.9 Euro + TVA", "M40"),
