@@ -20,7 +20,6 @@ import static buyticket.szabados.alpar.busticket.Tickets.NORMAL_TICKET;
 public class BusTicket extends AppCompatActivity {
     private static final SmsManager SMS_MANAGER = SmsManager.getDefault();
     private final int PERMISSION_REQUEST_SEND_SMS = 1;
-    private final String PHONE_ADDRESS = getString(R.string.phoneNumber);
 
     private EditText busNumber;
     private TextView timer;
@@ -88,7 +87,7 @@ public class BusTicket extends AppCompatActivity {
 
     private void sendMessage() {
         if (!message.isEmpty()) {
-            SMS_MANAGER.sendTextMessage(PHONE_ADDRESS, null, message, null, null);
+            SMS_MANAGER.sendTextMessage(getString(R.string.phoneNumber), null, message, null, null);
             getToast(getString(R.string.messageSent)).show();
         } else {
             getToast(getString(R.string.messageNotSent)).show();
