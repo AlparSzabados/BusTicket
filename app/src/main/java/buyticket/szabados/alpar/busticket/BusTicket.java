@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.content.DialogInterface.OnClickListener;
 import static buyticket.szabados.alpar.busticket.Tickets.NORMAL_TICKET;
 
 public class BusTicket extends AppCompatActivity {
@@ -38,39 +39,73 @@ public class BusTicket extends AppCompatActivity {
         checkPermission();
     }
 
+    public void onClick(final View view) {
+        setupPressedTicket(view);
+        getDialog(alertMessage, onAcceptSend(), onCancelSend(), "Yes", "No");
+    }
+
     private void checkPermission() {
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SEND_SMS)) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_SEND_SMS);
+                getDialog("You need to allow permission: SEND_SMS", onAccept(), null, "OK", "Cancel");
+                return;
             }
+            requestPermissions(new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_SEND_SMS);
+            return;
         }
     }
 
-    public void onClick(final View view) {
-        setupPressedTicket(view);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_SEND_SMS:
+                if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    getToast("SEND_SMS Permission Denied").show();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(alertMessage);
-        builder.setCancelable(true);
+    private void getDialog(String message, OnClickListener yesListener, OnClickListener noListener, String affirmative, String negative) {
+        new AlertDialog.Builder(this)
+                .setMessage(message)
+                .setPositiveButton(affirmative, yesListener)
+                .setNegativeButton(negative, noListener)
+                .create()
+                .show();
+    }
 
-        builder.setPositiveButton("Yes",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        if (!timer.toString().isEmpty() && countDownTimer != null)
-                            countDownTimer.cancel();
-                        createCountdownTimer(ticketDuration, 1000);
-                        sendMessage();
-                        clearMessage();
-                    }
-                });
-        builder.setNegativeButton("No",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        builder.create().show();
+    private OnClickListener onAcceptSend() {
+        return new OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                if (!timer.toString().isEmpty() && countDownTimer != null)
+                    countDownTimer.cancel();
+                createCountdownTimer(ticketDuration, 1000);
+                sendMessage();
+                clearMessage();
+            }
+        };
+    }
+
+    private OnClickListener onCancelSend() {
+        return new OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        };
+    }
+
+    private OnClickListener onAccept() {
+        return new OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                requestPermissions(new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_SEND_SMS);
+            }
+        };
     }
 
     private void createCountdownTimer(long start, long countdownUnit) {
