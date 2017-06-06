@@ -2,7 +2,6 @@
 Simple app for buying bus tickets in Cluj-Napoca. It automatically sends the right text message to `7479`. The message with your ticket will be received by your default text message app, not by this application.
 
 By default the phone number that the app is sending messages to is `7479`, this is the phone number provided by `CTPCJ` (local transportation company) for buying tickets using SMS. If you want to change this number to something else, you'll need to change this line in the `utils.xml` file:
-VTA percent can also be changed from here:
 ```xml
 <string name="phoneNumber">7479</string>
 ```
