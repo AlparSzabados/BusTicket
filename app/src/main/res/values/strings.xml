@@ -16,4 +16,6 @@
     <string name="totalCost">Total cost:</string>
     <string name="vTAText">with VTA</string>
     <string name="currency">Euro</string>
+    <string name="permissionDenied">SEND_SMS Permission Denied</string>
+    <string name="needPermission">You need to allow permission: SEND_SMS</string>
 </resources>
