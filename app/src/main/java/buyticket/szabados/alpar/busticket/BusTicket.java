@@ -52,7 +52,7 @@ public class BusTicket extends AppCompatActivity {
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SEND_SMS)) {
-                getDialog(getString(R.string.needPermission), onAccept(), null, "OK", "Cancel");
+                getDialog(getString(R.string.needPermission), onAcceptPermission(), null, "OK", "Cancel");
                 return;
             }
             requestPermissions(new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_SEND_SMS);
@@ -102,7 +102,7 @@ public class BusTicket extends AppCompatActivity {
         };
     }
 
-    private OnClickListener onAccept() {
+    private OnClickListener onAcceptPermission() {
         return new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
